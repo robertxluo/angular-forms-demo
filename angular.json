@@ -24,6 +24,8 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/minireset.css/minireset.min.css",
+              "node_modules/bulma/css/bulma.min.css",
               "src/styles.css"
             ],
             "scripts": []
