@@ -4,35 +4,155 @@
 
     <div class="card">
       <div class="card-content">
-        <form>
+        <form (ngSubmit)="save()" [formGroup]="customerForm">
           <div class="field">
-            <label class="label">Name</label>
+            <label class="label" for="firstNameReactiveId">First Name</label>
             <div class="control">
-              <input class="input" type="text">
+              <input id="firstNameReactiveId" class="input" type="text" formControlName="firstName"
+                [ngClass]="{'is-danger': (customerForm.get('firstName').touched || customerForm.get('firstName').dirty) && !customerForm.get('firstName').valid}"
+                minlength="3" required>
+            </div>
+            <span class="help is-danger">
+              <span *ngIf="!!customerForm.get('firstName').errors?.required">Please enter your first name.</span>
+              <span *ngIf="!!customerForm.get('firstName').errors?.minlength">The first name must be at least
+                3 characters.</span>
+            </span>
+          </div>
+
+          <div class="field">
+            <label class="label" for="lastNameReactiveId">Last Name</label>
+            <div class="control">
+              <input id="lastNameReactiveId" class="input" type="text" formControlName="lastName"
+                [ngClass]="{'is-danger': (customerForm.get('lastName').touched || customerForm.get('lastName').dirty) && !customerForm.get('lastName').valid}"
+                maxlength="50" required>
+            </div>
+            <span class="help is-danger">
+              <span *ngIf="!!customerForm.get('lastName').errors?.required">Please enter your last name.</span>
+              <span *ngIf="!!customerForm.get('lastName').errors?.maxlength">The last name must be less than 50
+                characters.</span>
+            </span>
+          </div>
+
+          <div class="field">
+            <label class="label" for="emailReactiveId">Email</label>
+            <div class="control">
+              <input id="emailReactiveId" class="input" type="email" formControlName="email"
+                [ngClass]="{'is-danger': (customerForm.get('email').touched || customerForm.get('email').dirty) && !customerForm.get('email').valid}"
+                required email>
+            </div>
+            <span class="help is-danger">
+              <span *ngIf="!!customerForm.get('email').errors?.required">Please enter a your email address.</span>
+              <span *ngIf="!!customerForm.get('email').errors?.email">Please enter a valid email address.</span>
+            </span>
+          </div>
+
+          <div class="field">
+            <label class="checkbox" for="sendCatalogReactiveId" formControlName="sendCatalog">
+              <input id="sendCatalogReactiveId" type="checkbox">
+              Send me your catalog
+            </label>
+          </div>
+
+          <!-- Send Catalog Section -->
+          <div *ngIf="customer.sendCatalog" class="field">
+            <div class="field is-horizontal">
+              <div class="field-label">
+                <label class="label">Address Type</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <label class="radio">
+                      <input id="addressType1ReactiveId" type="radio" value="home" [(ngModel)]="customer.addressType"
+                        name="addressType"> Home
+                    </label>
+                    <label class="radio">
+                      <input id="addressType2ReactiveId" type="radio" value="work" [(ngModel)]="customer.addressType"
+                        name="addressType"> Work
+                    </label>
+                    <label class="radio">
+                      <input id="addressType3ReactiveId" type="radio" value="other" [(ngModel)]="customer.addressType"
+                        name="addressType"> Other
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-label">
+                <label class="label" for="street1ReactiveId">Street Address 1</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <input class="input" id="street1ReactiveId" type="text" placeholder="Street address"
+                      [(ngModel)]="customer.street1" name="street1">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-label">
+                <label class="label" for="street2ReactiveId">Street Address 2</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <input class="input" id="street2ReactiveId" type="text" placeholder="Street address (second line)"
+                      [(ngModel)]="customer.street2" name="street2">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="field is-horizontal">
+              <div class="field-label">
+                <label class="label" for="cityReactiveId">City, State, Zip Code</label>
+              </div>
+              <div class="field-body">
+                <div class="field">
+                  <div class="control">
+                    <input class="input" id="cityReactiveId" type="text" placeholder="City" [(ngModel)]="customer.city"
+                      name="city">
+                  </div>
+                </div>
+                <div class="field is-narrow">
+                  <div class="select">
+                    <select id="stateReactiveId" [(ngModel)]="customer.state" name="state">
+                      <option value="" disabled selected hidden>Select a State...</option>
+                      <option value="AL">Alabama</option>
+                      <option value="AK">Alaska</option>
+                      <option value="AZ">Arizona</option>
+                      <option value="AR">Arkansas</option>
+                      <option value="CA">California</option>
+                      <option value="CO">Colorado</option>
+                      <option value="WI">Wisconsin</option>
+                      <option value="WY">Wyoming</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="field is-narrow">
+                  <div class="control">
+                    <input class="input" id="zipReactiveId" type="number" placeholder="Zip Code"
+                      [(ngModel)]="customer.zip" name="zip">
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
           <div class="field">
-            <label class="label">Email</label>
-            <div class="control">
-              <input class="input" type="email">
-            </div>
-          </div>
-
-          <div class="field">
-            <label class="label">Phone</label>
-            <div class="control">
-              <input class="input" type="tel">
-            </div>
-          </div>
-
-
-          <div class="field">
-            <button class="button is-link">Submit</button>
+            <button class="button is-link" type="submit">Save</button>
           </div>
         </form>
       </div>
     </div>
 
   </div>
+  <br>Dirty: {{ customerForm.dirty }}
+  <br>Touched: {{ customerForm.touched }}
+  <br>Valid: {{ customerForm.valid }}
+  <br>Value: {{ customerForm.value | json }}
 </section>
