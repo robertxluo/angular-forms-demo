@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+
+import { Customer } from '../models/customer';
 
 @Component({
   selector: 'app-template-driven-form',
@@ -6,10 +9,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./template-driven-form.component.css']
 })
 export class TemplateDrivenFormComponent implements OnInit {
+  customer = new Customer();
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  save(customerForm: NgForm) {
+    console.log(customerForm.form);
+    console.log(`Saved: ${JSON.stringify(customerForm.value)}`);
   }
-
 }
