@@ -143,10 +143,11 @@
             </div>
           </div>
 
-          <div class="field">
-            <button class="button is-link" type="submit"
+          <div class="field is-grouped">
+            <button class="button is-link control" type="submit"
               [title]="customerForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
               [disabled]="!customerForm.valid">Save</button>
+            <button class="button is-light" type="button" (click)="populateTestData()">Test Data</button>
           </div>
         </form>
       </div>
