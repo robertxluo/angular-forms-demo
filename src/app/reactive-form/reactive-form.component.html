@@ -144,7 +144,9 @@
           </div>
 
           <div class="field">
-            <button class="button is-link" type="submit">Save</button>
+            <button class="button is-link" type="submit"
+              [title]="customerForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
+              [disabled]="!customerForm.valid">Save</button>
           </div>
         </form>
       </div>
