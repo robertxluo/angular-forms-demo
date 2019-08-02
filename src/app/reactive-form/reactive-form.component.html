@@ -44,11 +44,43 @@
           </div>
 
           <div class="field">
+            <label class="label" for="phoneReactiveId">Phone</label>
+            <div class="control">
+              <input id="phoneReactiveId" class="input" type="tel" formControlName="phone"
+                [ngClass]="{'is-danger': (customerForm.get('phone').touched || customerForm.get('phone').dirty) && !customerForm.get('phone').valid}">
+            </div>
+            <span class="help is-danger">
+              <span *ngIf="!!customerForm.get('phone').errors?.required">Please enter your phone number.</span>
+            </span>
+          </div>
+
+          <div class="field is-horizontal">
+            <div class="field-label">
+              <label class="label" style="text-align: start;"> Notifications</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  <label class="radio">
+                    <input type="radio" value="email" formControlName="notification" (click)="setNotification('email')">
+                    Email
+                  </label>
+                  <label class="radio">
+                    <input type="radio" value="text" formControlName="notification" (click)="setNotification('text')">
+                    Text
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class=" field">
             <label class="checkbox" for="sendCatalogReactiveId" formControlName="sendCatalog">
               <input id="sendCatalogReactiveId" type="checkbox">
               Send me your catalog
             </label>
           </div>
+
 
           <!-- Send Catalog Section -->
           <div *ngIf="customer.sendCatalog" class="field">
