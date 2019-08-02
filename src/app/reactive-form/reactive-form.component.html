@@ -9,8 +9,7 @@
             <label class="label" for="firstNameReactiveId">First Name</label>
             <div class="control">
               <input id="firstNameReactiveId" class="input" type="text" formControlName="firstName"
-                [ngClass]="{'is-danger': (customerForm.get('firstName').touched || customerForm.get('firstName').dirty) && !customerForm.get('firstName').valid}"
-                minlength="3" required>
+                [ngClass]="{'is-danger': (customerForm.get('firstName').touched || customerForm.get('firstName').dirty) && !customerForm.get('firstName').valid}">
             </div>
             <span class="help is-danger">
               <span *ngIf="!!customerForm.get('firstName').errors?.required">Please enter your first name.</span>
@@ -23,8 +22,7 @@
             <label class="label" for="lastNameReactiveId">Last Name</label>
             <div class="control">
               <input id="lastNameReactiveId" class="input" type="text" formControlName="lastName"
-                [ngClass]="{'is-danger': (customerForm.get('lastName').touched || customerForm.get('lastName').dirty) && !customerForm.get('lastName').valid}"
-                maxlength="50" required>
+                [ngClass]="{'is-danger': (customerForm.get('lastName').touched || customerForm.get('lastName').dirty) && !customerForm.get('lastName').valid}">
             </div>
             <span class="help is-danger">
               <span *ngIf="!!customerForm.get('lastName').errors?.required">Please enter your last name.</span>
@@ -37,8 +35,7 @@
             <label class="label" for="emailReactiveId">Email</label>
             <div class="control">
               <input id="emailReactiveId" class="input" type="email" formControlName="email"
-                [ngClass]="{'is-danger': (customerForm.get('email').touched || customerForm.get('email').dirty) && !customerForm.get('email').valid}"
-                required email>
+                [ngClass]="{'is-danger': (customerForm.get('email').touched || customerForm.get('email').dirty) && !customerForm.get('email').valid}">
             </div>
             <span class="help is-danger">
               <span *ngIf="!!customerForm.get('email').errors?.required">Please enter a your email address.</span>
