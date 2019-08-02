@@ -39,7 +39,7 @@
                   [ngClass]="{'is-danger': (customerForm.get('emailGroup.email').touched || customerForm.get('emailGroup.email').dirty) && !customerForm.get('emailGroup.email').valid}">
               </div>
               <span class="help is-danger">
-                <span *ngIf="!!customerForm.get('emailGroup.email').errors?.required">Please enter a your email
+                <span *ngIf="!!customerForm.get('emailGroup.email').errors?.required">Please enter your email
                   address.</span>
                 <span *ngIf="!!customerForm.get('emailGroup.email').errors?.email">Please enter a valid email
                   address.</span>
