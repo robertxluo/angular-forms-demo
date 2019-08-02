@@ -36,7 +36,8 @@
               <label class="label" for="emailReactiveId">Email</label>
               <div class="control">
                 <input id="emailReactiveId" class="input" type="email" formControlName="email"
-                  [ngClass]="{'is-danger': (customerForm.get('emailGroup.email').touched || customerForm.get('emailGroup.email').dirty) && !customerForm.get('emailGroup.email').valid}">
+                  [ngClass]="{'is-danger': customerForm.get('emailGroup').errors||
+                  ((customerForm.get('emailGroup.email').touched || customerForm.get('emailGroup.email').dirty) && !customerForm.get('emailGroup.email').valid)}">
               </div>
               <span class="help is-danger">
                 <span *ngIf="!!customerForm.get('emailGroup.email').errors?.required">Please enter your email
@@ -50,11 +51,15 @@
               <label class="label" for="confirmEmailReactiveId">Confirm Email</label>
               <div class="control">
                 <input id="confirmEmailReactiveId" class="input" type="email" formControlName="confirmEmail"
-                  [ngClass]="{'is-danger': (customerForm.get('emailGroup.confirmEmail').touched || customerForm.get('emailGroup.confirmEmail').dirty) && !customerForm.get('emailGroup.confirmEmail').valid}">
+                  [ngClass]="{'is-danger': customerForm.get('emailGroup').errors ||
+                  ((customerForm.get('emailGroup.confirmEmail').touched || customerForm.get('emailGroup.confirmEmail').dirty) && !customerForm.get('emailGroup.confirmEmail').valid)}">
               </div>
               <span class="help is-danger">
                 <span *ngIf="!!customerForm.get('emailGroup.confirmEmail').errors?.required">
                   Please confirm your email address.
+                </span>
+                <span *ngIf="!!customerForm.get('emailGroup').errors?.match">
+                  The confirmation does not match the email address.
                 </span>
               </span>
             </div>
