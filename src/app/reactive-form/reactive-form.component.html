@@ -74,6 +74,17 @@
             </div>
           </div>
 
+          <div class="field">
+            <label class="label" for="ratingReactiveId">Rating</label>
+            <div class="control">
+              <input id="ratingReactiveId" class="input" type="number" formControlName="rating"
+                [ngClass]="{'is-danger': (customerForm.get('rating').touched || customerForm.get('rating').dirty) && !customerForm.get('rating').valid}">
+            </div>
+            <span class="help is-danger">
+              <span *ngIf="!!customerForm.get('rating').errors?.range">Please rate your experience from 1 to 5.</span>
+            </span>
+          </div>
+
           <div class=" field">
             <label class="checkbox" for="sendCatalogReactiveId" formControlName="sendCatalog">
               <input id="sendCatalogReactiveId" type="checkbox">
