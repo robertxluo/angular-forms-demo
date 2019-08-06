@@ -51,15 +51,17 @@ export class ReactiveFormComponent implements OnInit {
       phone: '',
       notification: 'email',
       rating: [null, ratingRange(1, 5)],
-      sendCatalog: true
+      sendCatalog: false
     });
+
+    this.customerForm.get('notification').valueChanges.subscribe(value => console.log(value));
   }
 
   populateTestData(): void {
     this.customerForm.patchValue({
       firstName: 'Jon',
       lastName: 'Moxley',
-      sendCatalog: false
+      sendCatalog: true
     });
   }
 
