@@ -54,7 +54,7 @@ export class ReactiveFormComponent implements OnInit {
       sendCatalog: false
     });
 
-    this.customerForm.get('notification').valueChanges.subscribe(value => console.log(value));
+    this.customerForm.get('notification').valueChanges.subscribe(value => this.setNotification(value));
   }
 
   populateTestData(): void {
