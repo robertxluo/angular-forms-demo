@@ -11,7 +11,7 @@
               <input id="firstNameReactiveId" class="input" type="text" formControlName="firstName"
                 [ngClass]="{'is-danger': (customerForm.get('firstName').touched || customerForm.get('firstName').dirty) && !customerForm.get('firstName').valid}">
             </div>
-            <span class="help is-danger">
+            <span *ngIf="!customerForm.get('firstName').pristine" class="help is-danger">
               <span *ngIf="!!customerForm.get('firstName').errors?.required">Please enter your first name.</span>
               <span *ngIf="!!customerForm.get('firstName').errors?.minlength">The first name must be at least
                 3 characters.</span>
@@ -24,7 +24,7 @@
               <input id="lastNameReactiveId" class="input" type="text" formControlName="lastName"
                 [ngClass]="{'is-danger': (customerForm.get('lastName').touched || customerForm.get('lastName').dirty) && !customerForm.get('lastName').valid}">
             </div>
-            <span class="help is-danger">
+            <span *ngIf="!customerForm.get('lastName').pristine" class="help is-danger">
               <span *ngIf="!!customerForm.get('lastName').errors?.required">Please enter your last name.</span>
               <span *ngIf="!!customerForm.get('lastName').errors?.maxlength">The last name must be less than 50
                 characters.</span>
@@ -50,7 +50,7 @@
                   [ngClass]="{'is-danger': customerForm.get('emailGroup').errors ||
                   ((customerForm.get('emailGroup.confirmEmail').touched || customerForm.get('emailGroup.confirmEmail').dirty) && !customerForm.get('emailGroup.confirmEmail').valid)}">
               </div>
-              <span class="help is-danger">
+              <span *ngIf="!customerForm.get('emailGroup.confirmEmail').pristine" class="help is-danger">
                 <span *ngIf="!!customerForm.get('emailGroup.confirmEmail').errors?.required">
                   Please confirm your email address.
                 </span>
@@ -67,7 +67,7 @@
               <input id="phoneReactiveId" class="input" type="tel" formControlName="phone"
                 [ngClass]="{'is-danger': (customerForm.get('phone').touched || customerForm.get('phone').dirty) && !customerForm.get('phone').valid}">
             </div>
-            <span class="help is-danger">
+            <span *ngIf="!customerForm.get('phone').pristine" class="help is-danger">
               <span *ngIf="!!customerForm.get('phone').errors?.required">Please enter your phone number.</span>
             </span>
           </div>
@@ -98,7 +98,7 @@
               <input id="ratingReactiveId" class="input" type="number" formControlName="rating"
                 [ngClass]="{'is-danger': (customerForm.get('rating').touched || customerForm.get('rating').dirty) && !customerForm.get('rating').valid}">
             </div>
-            <span class="help is-danger">
+            <span *ngIf="!customerForm.get('rating').pristine" class="help is-danger">
               <span *ngIf="!!customerForm.get('rating').errors?.range">Please rate your experience from 1 to 5.</span>
             </span>
           </div>
