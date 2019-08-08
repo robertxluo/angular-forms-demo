@@ -58,8 +58,7 @@ export class ReactiveFormComponent implements OnInit {
       ),
       phone: '',
       notification: 'email',
-      rating: [null, ratingRange(1, 5)],
-      sendCatalog: false
+      rating: [null, ratingRange(1, 5)]
     });
 
     this.customerForm
@@ -68,15 +67,14 @@ export class ReactiveFormComponent implements OnInit {
 
     const emailControl = this.customerForm.get('emailGroup.email');
     emailControl.valueChanges
-      .pipe(debounceTime(1000))
+      .pipe(debounceTime(3000))
       .subscribe(value => this.setMessage(emailControl));
   }
 
   populateTestData(): void {
     this.customerForm.patchValue({
       firstName: 'Jon',
-      lastName: 'Moxley',
-      sendCatalog: true
+      lastName: 'Moxley'
     });
   }
 
