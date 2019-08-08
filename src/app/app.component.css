@@ -1,0 +1,20 @@
+.title {
+  text-align: center;
+}
+
+.select-menu {
+  max-width: 400px;
+  margin-left: 5em;
+}
+
+@media (min-width: 320px) {
+  .select-menu {
+    margin-left: 10em;
+  }
+}
+
+@media (min-width: 492px) {
+  .select-menu {
+    margin-left: 15em;
+  }
+}

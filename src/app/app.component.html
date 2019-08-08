@@ -7,10 +7,17 @@
 </section>
 
 <div class="columns">
-  <div class="column">
-    <app-template-driven-form></app-template-driven-form>
+  <div class="column select-menu">
+    <label class="label">Select which form to demo</label>
+    <div class="select">
+      <select [(ngModel)]="selectedOption">
+        <option selected value="Template">Template-driven</option>
+        <option value="Reactive">Reactive</option>
+      </select>
+    </div>
   </div>
   <div class="column">
-    <app-reactive-form></app-reactive-form>
+    <app-template-driven-form *ngIf="selectedOption === 'Template'"></app-template-driven-form>
+    <app-reactive-form *ngIf="selectedOption === 'Reactive'"></app-reactive-form>
   </div>
 </div>
