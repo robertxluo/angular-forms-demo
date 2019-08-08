@@ -13,7 +13,7 @@
                 [ngClass]="{'is-danger': (firstNameVar.touched || firstNameVar.dirty) && !firstNameVar.valid}"
                 minlength="3" required>
             </div>
-            <span class="help is-danger">
+            <span *ngIf="!firstNameVar.pristine" class="help is-danger">
               <span *ngIf="!!firstNameVar.errors?.required">Please enter your first name.</span>
               <span *ngIf="!!firstNameVar.errors?.minlength">The first name must be at least 3 characters.</span>
             </span>
@@ -27,7 +27,7 @@
                 [ngClass]="{'is-danger': (lastNameVar.touched || lastNameVar.dirty) && !lastNameVar.valid}"
                 maxlength="50" required>
             </div>
-            <span class="help is-danger">
+            <span *ngIf="!lastNameVar.pristine" class="help is-danger">
               <span *ngIf="!!lastNameVar.errors?.required">Please enter your last name.</span>
               <span *ngIf="!!lastNameVar.errors?.maxlength">The last name must be less than 50 characters.</span>
             </span>
@@ -40,7 +40,7 @@
                 #emailVar="ngModel" [ngClass]="{'is-danger': (emailVar.touched || emailVar.dirty) && !emailVar.valid}"
                 required email>
             </div>
-            <span class="help is-danger">
+            <span *ngIf="!emailVar.pristine" class="help is-danger">
               <span *ngIf="!!emailVar.errors?.required">Please enter your email address.</span>
               <span *ngIf="!!emailVar.errors?.email">Please enter a valid email address.</span>
             </span>
