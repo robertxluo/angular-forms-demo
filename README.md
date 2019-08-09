@@ -2,7 +2,7 @@
 
 Angular has two ways to implement forms, template-driven forms and reactive forms. This application showcases both of these forms for learning purposes.
 
-## [View demo](angular-forms.netlify.com)
+## [View demo](https://angular-forms.netlify.com)
 
 ## Template-driven Forms
 
